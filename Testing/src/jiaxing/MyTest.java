@@ -100,6 +100,20 @@ public class MyTest {
 		myMerge.quickSort(0, array.length-1);
 		System.out.println(Arrays.toString(array));
 		
+		RunnableEx ex = new RunnableEx();	//runnable object implements runnable interface with run()
+		Thread thread = new Thread(ex);		//create a new thread with the runnable object in constructor
+		thread.start();	//invoke start() to begin thread
+		ThreadEx myThread = new ThreadEx();
+		myThread.start();
+		while(ex.count!=5&&myThread.count!=5){	//wait for count to 5
+			try{
+				Thread.sleep(250);
+				System.out.println("Main Thread");
+			}catch(InterruptedException exc){
+				exc.printStackTrace();
+			}
+		}
+		System.out.println("Terminate Program");
 	}
 
 }
